@@ -12,7 +12,7 @@ Este es un portal web desarrollado para la materia **Análisis y Diseño de Algo
 ## 🚀 Instalación y Uso
 1. Clona este repositorio en tu máquina local:
    ```bash
-   git clone https://github.com/tu-usuario/tu-repositorio.git
+   git clone https://github.com/oscarjnz/Portal-Web-ALGORITMOS-DE-MANEJO-DE-CADENAS-STRINGS-DE-CARACTERES-.git
    ```
 2. Abre el archivo `index.html` en tu navegador o usa un servidor local para visualizar la web.
 3. Asegúrate de que todos los archivos CSS y JS están correctamente enlazados para una mejor experiencia.
