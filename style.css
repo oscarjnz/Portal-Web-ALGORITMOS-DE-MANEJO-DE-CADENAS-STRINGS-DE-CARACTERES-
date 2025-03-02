@@ -115,11 +115,13 @@ section {
     transition: var(--transition);
 }
 
+.dark-mode section div{
+    background: #2c2c2c;
+}
+
 .dark-mode section {
     background: #2c2c2c;
 }
-.dark-mode section div{
-    background: #2c2c2c;
 
 footer {
     text-align: center;
