@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700;900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+    <title>Algoritmos</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="presentacion.html">Presentación</a></li>
+                <li><a href="definicion.html">Definición</a></li>
+                <li><a href="operaciones.html">Operaciones</a></li>
+                <li><a href="algoritmos.html">Algoritmos</a></li>
+                <li><a href="ejemplos.html">Ejemplos</a></li>
+                <li><a href="referencias.html">Referencias</a></li>
+            </ul>
+        </nav>
+        <h1>Algoritmos</h1>
+    </header>
+
+    <section>
+        <h2>Algoritmos en Diferentes Lenguajes de Programación</h2>
+        <p>Los algoritmos son conjuntos de instrucciones bien definidas que resuelven problemas específicos. Aunque la lógica subyacente es la misma, la implementación varía significativamente entre los diferentes lenguajes de programación debido a sus sintaxis, paradigmas y características particulares.</p>
+        <p>En este apartado, exploraremos el mismo conjunto de algoritmos implementados en seis lenguajes de programación diferentes: Python, JavaScript, Java, C++, Go y Ruby.</p>
+        <div class="bg-white text-black dark:bg-gray-900 dark:text-white">
+            <div class="language-section">
+                <div class="language-header">
+                    <h2>1. Python</h2>
+                </div>
+                <p>Python es conocido por su sintaxis clara y concisa, lo que lo hace ideal para expresar algoritmos de manera sencilla y legible. Es ampliamente utilizado en ciencia de datos, aprendizaje automático y desarrollo web.</p>
+                
+                <h3>Búsqueda Binaria</h3>
+                <div class="algo-description">
+                    <p>La búsqueda binaria es un algoritmo eficiente para encontrar un elemento en una lista ordenada. Funciona dividiendo repetidamente a la mitad el espacio de búsqueda hasta encontrar el elemento deseado.</p>
+                </div>
+                <div class="code-container">
+                    <pre>
+            def binary_search(arr, target):
+            """
+            Implementación de búsqueda binaria en Python.
+            Devuelve el índice del elemento si se encuentra, o -1 si no está presente.
+            """
+            left, right = 0, len(arr) - 1
+
+            while left <= right:
+                mid = (left + right) // 2
+                
+                # Verificar si el elemento está en el medio
+                if arr[mid] == target:
+                    return mid
+                
+                # Si el elemento es mayor, ignorar la mitad izquierda
+                elif arr[mid] < target:
+                    left = mid + 1
+                
+                # Si el elemento es menor, ignorar la mitad derecha
+                else:
+                    right = mid - 1
+
+            # Elemento no encontrado
+            return -1
+
+            # Ejemplo de uso
+            sorted_list = [1, 3, 5, 7, 9, 11, 13, 15]
+            target = 7
+            result = binary_search(sorted_list, target)
+            print(f"El elemento {target} está en el índice: {result}")
+                    </pre>
+                </div>
+                <p class="complexity">Complejidad temporal promedio: O(n log n) - Complejidad espacial: O(n)</p>
+            </div>
+
+            <div class="language-section">
+                <div class="language-header">
+                    <h2>2. JavaScript</h2>
+                </div>
+                <p>JavaScript es el lenguaje principal para desarrollo web en el lado del cliente. Su naturaleza asíncrona y su enfoque funcional ofrecen formas interesantes de implementar algoritmos clásicos.</p>
+                
+                <h3>Búsqueda Binaria</h3>
+                <div class="algo-description">
+                    <p>Implementación de búsqueda binaria en JavaScript, utilizando la sintaxis moderna de ES6+.</p>
+                </div>
+                <div class="code-container">
+                    <pre>
+            function binarySearch(arr, target) {
+            /**
+            * Implementación de búsqueda binaria en JavaScript.
+            * @param {Array} arr - Array ordenado de números
+            * @param {number} target - Elemento a buscar
+            * @return {number} - Índice del elemento o -1 si no se encuentra
+            */
+            let left = 0;
+            let right = arr.length - 1;
+
+            while (left <= right) {
+                // Usar bitwise para obtener el entero de la división
+                const mid = left + ((right - left) >> 1);
+                
+                if (arr[mid] === target) {
+                    return mid;
+                } else if (arr[mid] < target) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
+            }
+
+            return -1;
+            }
+
+            // Ejemplo de uso
+            const sortedArray = [1, 3, 5, 7, 9, 11, 13, 15];
+            const target = 7;
+            const result = binarySearch(sortedArray, target);
+            console.log(`El elemento ${target} está en el índice: ${result}`);
+                    </pre>
+                </div>
+                <p class="complexity">Complejidad temporal promedio: O(n log n) - Complejidad espacial: O(n)</p>
+            </div>
+            <div class="language-section">
+                <div class="language-header">
+                    <h2>3. Java</h2>
+                </div>
+                <p>Java es un lenguaje orientado a objetos ampliamente utilizado en desarrollo empresarial. Su tipado estático y orientación a objetos influyen en cómo se implementan los algoritmos.</p>
+                <p class="complexity">Complejidad temporal: O(log n) - Complejidad espacial: O(1)</p>
+                
+                <h3>Ordenamiento Rápido (Quicksort)</h3>
+                <div class="algo-description">
+                    <p>Implementación de Quicksort en Java con un enfoque más tradicional utilizando división in-place.</p>
+                </div>
+                <div class="code-container">
+                    <pre>
+            import java.util.Arrays;
+
+            public class QuickSort {
+            /**
+            * Método principal para ordenar el array utilizando Quicksort.
+            * @param arr Array a ordenar
+            */
+            public static void quickSort(int[] arr) {
+                quickSort(arr, 0, arr.length - 1);
+            }
+
+            /**
+            * Implementación recursiva de Quicksort.
+            * @param arr Array a ordenar
+            * @param low Índice inferior
+            * @param high Índice superior
+            */
+            private static void quickSort(int[] arr, int low, int high) {
+                if (low < high) {
+                    // Particionar el array y obtener el índice del pivote
+                    int pivotIndex = partition(arr, low, high);
+                    
+                    // Ordenar recursivamente las dos mitades
+                    quickSort(arr, low, pivotIndex - 1);
+                    quickSort(arr, pivotIndex + 1, high);
+                }
+            }
+
+            /**
+            * Método de partición que toma el último elemento como pivote,
+            * lo coloca en su posición correcta y coloca todos los elementos menores
+            * a la izquierda y los mayores a la derecha.
+            * @param arr Array a particionar
+            * @param low Índice inferior
+            * @param high Índice superior
+            * @return Índice del pivote después de la partición
+            */
+            private static int partition(int[] arr, int low, int high) {
+                // Seleccionar el último elemento como pivote
+                int pivot = arr[high];
+                
+                // Índice del elemento más pequeño
+                int i = (low - 1);
+                
+                for (int j = low; j < high; j++) {
+                    // Si el elemento actual es menor o igual al pivote
+                    if (arr[j] <= pivot) {
+                        i++;
+                        
+                        // Intercambiar arr[i] y arr[j]
+                        int temp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = temp;
+                    }
+                }
+                
+                // Intercambiar arr[i+1] y arr[high] (pivote)
+                int temp = arr[i + 1];
+                arr[i + 1] = arr[high];
+                arr[high] = temp;
+                
+                return i + 1;
+            }
+
+            public static void main(String[] args) {
+                int[] unsortedArray = {38, 27, 43, 3, 9, 82, 10};
+                System.out.println("Array original: " + Arrays.toString(unsortedArray));
+                
+                quickSort(unsortedArray);
+                
+                System.out.println("Array ordenado: " + Arrays.toString(unsortedArray));
+            }
+            }
+                    </pre>
+                </div>
+                <p class="complexity">Complejidad temporal promedio: O(n log n) - Complejidad espacial: O(log n)</p>
+            </div>
+
+            <div class="language-section">
+                <div class="language-header">
+                    <h2>4. C++</h2>
+                </div>
+                <p>C++ es un lenguaje de alto rendimiento utilizado en sistemas donde el rendimiento es crítico. Su gestión manual de memoria y sus características de bajo nivel afectan la implementación de algoritmos.</p>
+                
+                <h3>Búsqueda Binaria</h3>
+                <div class="algo-description">
+                    <p>Implementación de búsqueda binaria en C++ con énfasis en la eficiencia.</p>
+                </div>
+                <div class="code-container">
+                    <pre>
+            #include <iostream>
+            #include <vector>
+
+            /**
+            * Implementación de búsqueda binaria en C++.
+            * @param arr Vector ordenado de enteros
+            * @param target Elemento a buscar
+            * @return Índice del elemento o -1 si no se encuentra
+            */
+            int binarySearch(const std::vector<int>& arr, int target) {
+            int left = 0;
+            int right = arr.size() - 1;
+
+            while (left <= right) {
+                // Evitar desbordamiento en la suma
+                int mid = left + (right - left) / 2;
+                
+                // Verificar si el elemento está en el medio
+                if (arr[mid] == target) {
+                    return mid;
+                }
+                
+                // Si el elemento es mayor, ignorar la mitad izquierda
+                if (arr[mid] < target) {
+                    left = mid + 1;
+                }
+                // Si el elemento es menor, ignorar la mitad derecha
+                else {
+                    right = mid - 1;
+                }
+            }
+
+            // Elemento no encontrado
+            return -1;
+            }
+
+            int main() {
+            std::vector<int> sortedArray = {1, 3, 5, 7, 9, 11, 13, 15};
+            int target = 7;
+
+            int result = binarySearch(sortedArray, target);
+
+            std::cout << "El elemento " << target << " está en el índice: " << result << std::endl;
+
+            return 0;
+            }
+                    </pre>
+                </div>
+            </div>
+                <p class="complexity">Complejidad temporal promedio: O(n log n) - Complejidad espacial: O(log n)</p>
+            </div>
+            <div class="language-section">
+                <div class="language-header">
+                    <h2>5. Go</h2>
+                </div>
+                <p>Go (Golang) es un lenguaje moderno diseñado para la concurrencia y la eficiencia. Su sintaxis simple y su enfoque pragmático influyen en la implementación de algoritmos.</p>
+                
+                <h3>Ordenamiento Rápido (Quicksort)</h3>
+                <div class="algo-description">
+                    <p>Implementación de Quicksort en Go utilizando slices y el sistema de tipos del lenguaje.</p>
+                </div>
+                <div class="code-container">
+                    <pre>
+            package main
+
+            import "fmt"
+
+            // QuickSort ordena un slice de enteros utilizando el algoritmo Quicksort.
+            func QuickSort(arr []int) []int {
+            // Caso base: un slice vacío o con un solo elemento ya está ordenado
+            if len(arr) <= 1 {
+                return arr
+            }
+
+            // Crear slices para los elementos menores, iguales y mayores que el pivote
+            pivot := arr[len(arr)/2] // Elegir el elemento del medio como pivote
+            var less, equal, greater []int
+
+            // Particionar el slice
+            for _, v := range arr {
+                if v < pivot {
+                    less = append(less, v)
+                } else if v == pivot {
+                    equal = append(equal, v)
+                } else {
+                    greater = append(greater, v)
+                }
+            }
+
+            // Recursivamente ordenar las particiones y combinarlas
+            less = QuickSort(less)
+            greater = QuickSort(greater)
+
+            // Combinar los tres slices
+            result := append(less, equal...)
+            result = append(result, greater...)
+
+            return result
+            }
+
+            // Implementación alternativa de QuickSort que ordena in-place
+            func QuickSortInPlace(arr []int, low, high int) {
+            if low < high {
+                // Particionar el array y obtener el índice del pivote
+                pivotIndex := partition(arr, low, high)
+                
+                // Ordenar recursivamente las dos mitades
+                QuickSortInPlace(arr, low, pivotIndex-1)
+                QuickSortInPlace(arr, pivotIndex+1, high)
+            }
+            }
+
+            func partition(arr []int, low, high int) int {
+            // Seleccionar el último elemento como pivote
+            pivot := arr[high]
+
+            // Índice del elemento más pequeño
+            i := low - 1
+
+            for j := low; j < high; j++ {
+                // Si el elemento actual es menor o igual al pivote
+                if arr[j] <= pivot {
+                    i++
+                    arr[i], arr[j] = arr[j], arr[i] // Intercambiar elementos
+                }
+            }
+
+            // Colocar el pivote en su posición correcta
+            arr[i+1], arr[high] = arr[high], arr[i+1]
+
+            return i + 1
+            }
+
+            func main() {
+            // Ejemplo 1: QuickSort (crea un nuevo slice)
+            unsortedArray1 := []int{38, 27, 43, 3, 9, 82, 10}
+            fmt.Println("Array original:", unsortedArray1)
+
+            sortedArray := QuickSort(unsortedArray1)
+            fmt.Println("Array ordenado (QuickSort):", sortedArray)
+
+            // Ejemplo 2: QuickSortInPlace (ordena el slice original)
+            unsortedArray2 := []int{38, 27, 43, 3, 9, 82, 10}
+            fmt.Println("\nArray original para ordenamiento in-place:", unsortedArray2)
+
+            QuickSortInPlace(unsortedArray2, 0, len(unsortedArray2)-1)
+            fmt.Println("Array ordenado (QuickSortInPlace):", unsortedArray2)
+            }
+                    </pre>
+                </div>
+                <p class="complexity">Complejidad temporal promedio: O(n log n) - Complejidad espacial: O(n) para la primera implementación, O(log n) para la segunda</p>
+            </div>
+
+            <div class="language-section">
+                <div class="language-header">
+                    <h2>6. Ruby</h2>
+                </div>
+                <p>Ruby es un lenguaje orientado a objetos conocido por su elegancia y expresividad. Sus características dinámicas y su filosofía "todo es un objeto" influyen en la implementación de algoritmos.</p>
+                
+                <h3>Búsqueda Binaria</h3>
+                <div class="algo-description">
+                    <p>Implementación de búsqueda binaria en Ruby con su sintaxis expresiva.</p>
+                </div>
+                <div class="code-container">
+                    <pre>
+            # Implementación de búsqueda binaria en Ruby.
+            # Devuelve el índice del elemento si se encuentra, o nil si no está presente.
+            def binary_search(arr, target)
+            left = 0
+            right = arr.length - 1
+
+            while left <= right
+            # Calcular el índice medio
+            mid = left + (right - left) / 2
+
+            # Verificar si el elemento está en el medio
+            if arr[mid] == target
+            return mid
+
+            # Si el elemento es mayor, ignorar la mitad izquierda
+            elsif arr[mid] < target
+            left = mid + 1
+
+            # Si el elemento es menor, ignorar la mitad derecha
+            else
+            right = mid - 1
+            end
+            end
+
+            # Elemento no encontrado
+            nil
+            end
+
+            # Agregar el método binary_search directamente a la clase Array
+            class Array
+            def binary_search(target)
+            binary_search(self, target)
+            end
+            end
+
+            # Ejemplo de uso
+            sorted_array = [1, 3, 5, 7, 9, 11, 13, 15]
+            target = 7
+
+            # Usando la función
+            result = binary_search(sorted_array, target)
+            puts "El elemento #{target} está en el índice: #{result || 'no encontrado'}"
+
+            # Usando el método de la clase Array
+            result = sorted_array.binary_search(target)
+            puts "Usando método de Array: El elemento #{target} está en el índice: #{result || 'no encontrado'}"
+                    </pre>
+                </div>
+                <p class="complexity">Complejidad temporal promedio: O(n log n) - Complejidad espacial: O(log n)</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Algoritmos de Manejo de Cadenas. Todos los derechos reservados.</p>
+        <p>Licencia: Creative Commons Attribution 4.0 International</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="script.js" defer></script>
+    <script src="transition.js"></script>
+</body>
+</html>

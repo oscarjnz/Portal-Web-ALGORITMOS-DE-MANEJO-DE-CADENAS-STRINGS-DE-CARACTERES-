@@ -1,0 +1,246 @@
+nav {
+    position:-webkit-sticky;
+    top: 0;
+    width: 100%;
+    background: #333;
+    padding: 10px 0;
+    z-index: 500;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px;
+    transition: background 0.3s ease;
+}
+
+nav ul li a:hover {
+    background: #555;
+    border-radius: 5px;
+}
+
+body {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+:root {
+    --bg-light: #f4f4f4;
+    --text-light: #222;
+    --bg-dark: #1e1e1e;
+    --text-dark: #f4f4f4;
+    --accent: #007bff;
+    --transition: 0.3s ease-in-out;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    transition: var(--transition);
+}
+
+.dark-mode {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+header {
+    background: var(--accent);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    transition: var(--transition);
+}
+
+nav ul li a:hover {
+    background: white;
+    color: var(--accent);
+    border-radius: 5px;
+}
+
+section {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.dark-mode section {
+    background: #2c2c2c;
+}
+.dark-mode section div{
+    background: #2c2c2c;
+
+footer {
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+    background: var(--accent);
+    color: rgb(255, 255, 255);
+}
+
+#theme-toggle {
+    cursor: pointer;
+    position: relative;
+    top: 10px;
+    right: 10px;
+    background: var(--accent);
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+#theme-toggle:hover {
+    background: #894ff5;
+}
+
+#theme-toggle {
+    position: fixed;
+    top: 60px;
+    right: 10px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #202020;
+    border: none;
+    cursor: pointer;
+    z-index: 500;
+}
+
+body {
+    background-color: white;
+    color: black;
+}
+body.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #000000;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+h1 {
+    color: #000000;
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+h2 {
+    color: #2980b9;
+    margin-top: 30px;
+    border-left: 4px solid #3498db;
+    padding-left: 10px;
+}
+h3 {
+    color: #16a085;
+}
+.language-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.code-container {
+    background-color: #f8f8f8;
+    border-left: 3px solid #3498db;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 0 5px 5px 0;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+}
+.algo-description {
+    margin-bottom: 15px;
+}
+.complexity {
+    font-style: italic;
+    color: #7f8c8d;
+    margin-top: 10px;
+}
+.language-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.language-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+.comparison-table th, .comparison-table td {
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    text-align: left;
+}
+.comparison-table th {
+    background-color: #3498db;
+    color: white;
+}
+.comparison-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
