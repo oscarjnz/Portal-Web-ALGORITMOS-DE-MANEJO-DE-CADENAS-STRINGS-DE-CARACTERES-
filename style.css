@@ -7,9 +7,6 @@ nav {
     z-index: 500;
 }
 
-
-
-
 nav ul {
     display: flex;
     justify-content: center;
@@ -154,7 +151,7 @@ footer {
 
 #theme-toggle {
     position: fixed;
-    top: 60px;
+    top: 90px;
     right: 10px;
     padding: 10px;
     font-size: 16px;
@@ -192,11 +189,13 @@ h1 {
 h2 {
     color: #2980b9;
     margin-top: 30px;
-    border-left: 4px solid #3498db;
+    border-left: 4px solid #3498db37;
     padding-left: 10px;
 }
 h3 {
-    color: #16a085;
+    color: #25cda0;
+    margin-top: 30px;
+    padding-left: 10px;
 }
 .language-section {
     background-color: white;
@@ -249,3 +248,86 @@ h3 {
 .comparison-table tr:nth-child(even) {
     background-color: #f2f2f2;
 }
+
+
+
+body { 
+    font-family: Arial, sans-serif; 
+}
+.codigo { 
+    background: #222; color: #0f0; padding: 10px; text-align: left; white-space: pre-wrap; font-family: monospace; 
+}
+
+
+/* A partir de aquí, se trabajará con la adaptabilidad del código */
+
+/* Para móviles (pantallas menores a 768px) */
+@media screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    section {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .language-section {
+        padding: 10px;
+    }
+
+    .code-container {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .comparison-table {
+        font-size: 14px;
+        overflow-x: auto;
+        display: block;
+    }
+    
+    #theme-toggle {
+        top: 20px;
+        right: 20px;
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+/* Para tablets (pantallas entre 768px y 1024px) */
+@media screen and (max-width: 1024px) {
+    section {
+        max-width: 90%;
+        padding: 20px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+    }
+}
+
+/* Para pantallas grandes (mayores a 1200px) */
+@media screen and (min-width: 1200px) {
+    section {
+        max-width: 800px;
+    }
+}
+
+/* Para que las imágenes no se salgan de la pantalla */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Para evitar que el contenido (lo que sea) se salga del contenedor */
+body {
+    overflow-x: hidden;
+}
+
