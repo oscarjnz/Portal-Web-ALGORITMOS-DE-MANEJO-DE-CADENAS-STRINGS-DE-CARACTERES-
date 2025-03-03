@@ -342,3 +342,103 @@ body {
     list-style-type: none;
     padding-left: 0;
 }
+
+/* Menu de hamburguesa */
+nav {
+    position:-webkit-sticky;
+    padding: 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: right;
+    background-color: #007bff; /* #007bff */
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin-right: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #d0ffc8;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.menu a:hover {
+    color: #0066cc;
+}
+
+.hamburger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    padding: 10px;
+    z-index: 10;
+}
+
+.menuIcon, .closeIcon {
+    font-size: 24px;
+    transition: 0.3s ease;
+}
+
+.closeIcon {
+    display:none;
+}
+
+
+.menu {
+    position: fixed;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    list-style: none;
+    padding-top: 4rem;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.menu.showMenu {
+    transform: translateY(0);
+}
+
+.hamburger {
+    display:ruby;
+}
+
+.menuItem {
+    color: rgb(67, 67, 67);
+    display: flexbox;
+    margin: 2rem 0;
+    font-size: 1.5rem;
+    text-align: left;
+}
+
+.menuItem:hover {
+    color: #0066cc;
+}
+
+.showMenu .closeIcon {
+    display: flex;
+}
+
+.showMenu .menuIcon {
+    display: flex;
+}
+
+.menu li {
+    margin: 1px 100;
+}
