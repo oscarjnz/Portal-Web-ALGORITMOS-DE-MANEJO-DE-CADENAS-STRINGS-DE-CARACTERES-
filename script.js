@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Agregar botón para cambiar entre Modo Oscuro y Modo Claro
+    // 🔹 Agregar botón para cambiar entre Modo Oscuro y Modo Claro
     const themeToggle = document.createElement("button");
     themeToggle.id = "theme-toggle";
     document.body.appendChild(themeToggle);
 
-    // Comprobar si el usuario tenía el modo oscuro activado y dejar como se quedó la última vez
+    // Comprobar si el usuario tenía el modo oscuro activado
     const modoOscuroGuardado = localStorage.getItem("modoOscuro");
     if (modoOscuroGuardado === "activado") {
         document.body.classList.add("dark-mode");
@@ -176,6 +176,38 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-document.getElementById("modoOscuroBtn").addEventListener("click", function() {
-    document.body.classList.toggle("modo-oscuro");
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the hamburger button and menu elements
+    const hamburger = document.querySelector(".hamburger");
+    const menu = document.querySelector(".menu");
+    
+    // Add click event listener to the hamburger button
+    hamburger.addEventListener("click", function() {
+        // Toggle the showMenu class on the menu element
+        menu.classList.toggle("showMenu");
+        
+        // Toggle aria-expanded attribute for accessibility
+        const isExpanded = menu.classList.contains("showMenu");
+        hamburger.setAttribute("aria-expanded", isExpanded);
+    });
+    
+    // Close the menu when a menu item is clicked
+    const menuItems = document.querySelectorAll(".menuItem");
+    menuItems.forEach(function(menuItem) {
+        menuItem.addEventListener("click", function() {
+            menu.classList.remove("showMenu");
+            hamburger.setAttribute("aria-expanded", false);
+        });
+    });
+    
+    // Close the menu when clicking outside of it
+    document.addEventListener("click", function(event) {
+        const isClickInsideMenu = menu.contains(event.target);
+        const isClickInsideHamburger = hamburger.contains(event.target);
+        
+        if (!isClickInsideMenu && !isClickInsideHamburger && menu.classList.contains("showMenu")) {
+            menu.classList.remove("showMenu");
+            hamburger.setAttribute("aria-expanded", false);
+        }
+    });
 });
