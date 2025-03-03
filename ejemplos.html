@@ -10,6 +10,13 @@
     <title>Ejemplos</title>
     <link rel="icon" href="image1.ico">
     <style>
+        #ejemplos .intro {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
         .ejemplo {
             margin-bottom: 50px;
             padding: 20px;
@@ -17,36 +24,42 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
+
         .codigo {
-            background-color: #272727;
+            background-color: #202020;
             padding: 15px;
             border-radius: 5px;
             margin: 20px 0;
             overflow-x: auto;
         }
+
         .codigo pre {
             margin: 0;
             white-space: pre-wrap;
         }
+
         .codigo code {
             font-family: monospace;
             font-size: 0.9em;
-            color: #37e900;
+            color: #00ff08;
         }
+
         .container {
             margin: 25px 0;
             padding: 20px;
             background-color: #f9f9f9;
             border-radius: 5px;
         }
+
         input[type="text"] {
-            width: 80%;
+            width: 100%;
             padding: 10px;
-            margin: 10px 0;
+            margin: 5px 0 15px;
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 1em;
         }
+
         button {
             background-color: #0066cc;
             color: white;
@@ -57,9 +70,11 @@
             font-size: 1em;
             transition: background-color 0.3s;
         }
+
         button:hover {
             background-color: #0055aa;
         }
+
         .resultado {
             margin-top: 20px;
             padding: 15px;
@@ -67,6 +82,7 @@
             border-radius: 5px;
             border: 1px solid #ddd;
         }
+
         .output {
             font-family: monospace;
             background-color: #f0f0f0;
@@ -74,6 +90,47 @@
             border-radius: 4px;
             min-height: 20px;
         }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        /* Animación para resultados */
+        @keyframes highlight {
+            0% { background-color: #fffacd; }
+            100% { background-color: #f0f0f0; }
+        }
+
+        .highlight {
+            animation: highlight 2s ease-in-out;
+        }
+        /* Modo normal */
+        #outputText1 {
+            background-color: white;
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        #outputText2 {
+            background-color: white;
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Modo oscuro */
+        .modo-oscuro #outputText2 {
+            background-color: #222; /* Fondo oscuro */
+            color: white; /* Texto claro */
+            border: 1px solid #444; /* Para diferenciar la caja */
+        }
+
     </style>
 </head>
 <body>
@@ -94,22 +151,29 @@
 
     <section id="ejemplos">
         <div class="intro">
-            <p>En este apartado, mostramos dos ejemplos de programas que implementan el <strong>manejo de cadenas (strings)</strong> en diferentes lenguajes.</p>
+            <p>En este apartado, mostramos dos ejemplos de programas que implementan <strong>algoritmos de manejo de cadenas (strings)</strong> desarrollados desde cero.</p>
         </div>
 
         <div class="ejemplo" id="ejemplo1">
-            <h2>Ejemplo 1: Inversión de una Cadena (JavaScript)</h2>
-            <p>Este programa invierte una cadena ingresada por el usuario.</p>
+            <h2>Ejemplo 1: Algoritmo de Inversión Manual de Cadenas (JavaScript)</h2>
+            <p>Este algoritmo invierte una cadena carácter por carácter sin utilizar funciones incorporadas como reverse().</p>
             <div class="codigo">
                 <pre><code>
-function invertirCadena(inputString) {
-    // Convierte la cadena en un array, invierte el orden y vuelve a unir
-    return inputString.split('').reverse().join('');
+function invertirCadenaAlgoritmo(inputString) {
+    // Implementación manual del algoritmo de inversión
+    let resultado = "";
+    
+    // Recorrer la cadena de atrás hacia adelante
+    for (let i = inputString.length - 1; i >= 0; i--) {
+        resultado += inputString[i];
+    }
+    
+    return resultado;
 }
                 </code></pre>
             </div>
             <div class="container">
-                <h3>Prueba la inversión de cadena:</h3>
+                <h3>Prueba el algoritmo de inversión:</h3>
                 <input type="text" id="inputText1" placeholder="Escribe algo...">
                 <button onclick="procesarInversion()">Procesar</button>
                 <div class="resultado">
@@ -120,48 +184,89 @@ function invertirCadena(inputString) {
         </div>
         
         <div class="ejemplo" id="ejemplo2">
-            <h2>Ejemplo 2: Contar la Frecuencia de Palabras (JavaScript)</h2>
-            <p>Este programa cuenta cuántas veces aparece cada palabra en una cadena.</p>
+            <h2>Ejemplo 2: Algoritmo de Búsqueda de Subcadenas (KMP)</h2>
+            <p>Este programa implementa el algoritmo Knuth-Morris-Pratt para búsqueda eficiente de patrones en cadenas (JavaScript).</p>
             <div class="codigo">
                 <pre><code>
-function contarFrecuenciaPalabras(inputString) {
-    // Convertir a minúsculas y eliminar signos de puntuación
-    const texto = inputString.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+function busquedaKMP(texto, patron) {
+    // Algoritmo Knuth-Morris-Pratt para búsqueda de patrones
     
-    // Dividir en palabras
-    const palabras = texto.split(/\s+/);
+    // Función para calcular la tabla de prefijos
+    function calcularTablaPrefijos(patron) {
+        const m = patron.length;
+        let tabla = new Array(m).fill(0);
+        
+        for (let i = 1, j = 0; i < m; i++) {
+            while (j > 0 && patron[i] !== patron[j]) {
+                j = tabla[j - 1];
+            }
+            
+            if (patron[i] === patron[j]) {
+                j++;
+            }
+            
+            tabla[i] = j;
+        }
+        
+        return tabla;
+    }
     
-    // Contar frecuencia
-    const frecuencia = {};
-    for (let palabra of palabras) {
-        if (palabra) { // Ignorar cadenas vacías
-            frecuencia[palabra] = (frecuencia[palabra] || 0) + 1;
+    // Función principal KMP
+    function kmp(texto, patron) {
+        if (patron === "") return "Patrón vacío encontrado en todas las posiciones";
+        
+        const n = texto.length;
+        const m = patron.length;
+        const tablaPrefijos = calcularTablaPrefijos(patron);
+        let posiciones = [];
+        
+        for (let i = 0, j = 0; i < n; i++) {
+            while (j > 0 && texto[i] !== patron[j]) {
+                j = tablaPrefijos[j - 1];
+            }
+            
+            if (texto[i] === patron[j]) {
+                j++;
+            }
+            
+            if (j === m) {
+                posiciones.push(i - m + 1);
+                j = tablaPrefijos[j - 1];
+            }
+        }
+        
+        if (posiciones.length === 0) {
+            return "Patrón no encontrado en el texto";
+        } else {
+            return `Patrón encontrado en posición(es): ${posiciones.join(", ")}`;
         }
     }
     
-    // Convertir a formato de salida
-    let resultado = "";
-    for (let palabra in frecuencia) {
-        resultado += `"${palabra}": ${frecuencia[palabra]} veces\n`;
-    }
-    
-    return resultado;
+    return kmp(texto, patron);
 }
                 </code></pre>
             </div>
             <div class="container">
-                <h3>Prueba el contador de frecuencia de palabras:</h3>
-                <input type="text" id="inputText2" placeholder="Escribe una frase...">
-                <button onclick="procesarFrecuencia()">Procesar</button>
+                <h3>Prueba el algoritmo KMP de búsqueda de subcadenas:</h3>
+                <div class="input-group">
+                    <label for="textoCompleto">Texto donde buscar:</label>
+                    <input type="text" id="textoCompleto" placeholder="Texto completo...">
+                </div>
+                <div class="input-group">
+                    <label for="patronBusqueda">Patrón a buscar:</label>
+                    <input type="text" id="patronBusqueda" placeholder="Patrón a buscar...">
+                </div>
+                <button onclick="procesarBusqueda()">Buscar</button>
                 <div class="resultado">
                     <p>Resultado:</p>
-                    <pre id="outputText2" class="output"></pre>
+                    <p id="outputText2" class="output"></p>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
+        <p>Este apartado fue desarrollado por <a href="presentacion.html">Oscar O. Jiménez Peguero</a> y <a href="presentacion.html">Samuel Piña Polanco</a></p>
         <p>&copy; 2025 Algoritmos de Manejo de Cadenas. Todos los derechos reservados.</p>
     </footer>
 
