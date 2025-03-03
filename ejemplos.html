@@ -8,6 +8,86 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700;900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <title>Ejemplos</title>
+    <link rel="icon" href="image1.ico">
+    <style>
+
+
+        /* Estilos específicos para la página de ejemplos */
+
+        .ejemplo {
+            margin-bottom: 50px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .codigo {
+            background-color: #272727;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .codigo pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+
+        .codigo code {
+            font-family: monospace;
+            font-size: 0.9em;
+            color: #37e900;
+        }
+
+        .container {
+            margin: 25px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0055aa;
+        }
+
+        .resultado {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .output {
+            font-family: monospace;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            min-height: 20px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -26,54 +106,72 @@
     </header>
 
     <section id="ejemplos">
-        <section>
-            <p>En este apartado, mostramos dos ejemplos de programas que implementan el<strong> de cadenas (strings)</strong> en diferentes lenguajes.</p>
-        </section>
-        <body>
-            <h2>Ejemplo 1: Inversión de una Cadena (Python)</h2>
+        <div class="intro">
+            <p>En este apartado, mostramos dos ejemplos de programas que implementan el <strong>manejo de cadenas (strings)</strong> en diferentes lenguajes.</p>
+        </div>
+
+        <div class="ejemplo" id="ejemplo1">
+            <h2>Ejemplo 1: Inversión de una Cadena (JavaScript)</h2>
             <p>Este programa invierte una cadena ingresada por el usuario.</p>
             <div class="codigo">
-                <code>
-        # Programa para invertir una cadena en Python
-        def invertir_cadena(texto):
-            return texto[::-1]
-        
-        cadena = input("Ingresa una cadena: ")
-        print("Cadena invertida:", invertir_cadena(cadena))
-                </code>
+                <pre><code>
+function invertirCadena(inputString) {
+    // Convierte la cadena en un array, invierte el orden y vuelve a unir
+    return inputString.split('').reverse().join('');
+}
+                </code></pre>
             </div>
+            <div class="container">
+                <h3>Prueba la inversión de cadena:</h3>
+                <input type="text" id="inputText1" placeholder="Escribe algo...">
+                <button onclick="procesarInversion()">Procesar</button>
+                <div class="resultado">
+                    <p>Resultado:</p>
+                    <p id="outputText1" class="output"></p>
+                </div>
+            </div>
+        </div>
         
-            <h2>Ejemplo 2: Contar la Frecuencia de Palabras (Java)</h2>
+        <div class="ejemplo" id="ejemplo2">
+            <h2>Ejemplo 2: Contar la Frecuencia de Palabras (JavaScript)</h2>
             <p>Este programa cuenta cuántas veces aparece cada palabra en una cadena.</p>
             <div class="codigo">
-                <code>
-        import java.util.HashMap;
-        import java.util.Scanner;
-        
-        public class ContarPalabras {
-            public static void main(String[] args) {
-                Scanner scanner = new Scanner(System.in);
-                System.out.println("Ingresa una frase:");
-                String texto = scanner.nextLine();
-                
-                String[] palabras = texto.toLowerCase().split("\\s+");
-                HashMap<String, Integer> frecuencia = new HashMap<>();
-                
-                for (String palabra : palabras) {
-                    frecuencia.put(palabra, frecuencia.getOrDefault(palabra, 0) + 1);
-                }
-        
-                System.out.println("Frecuencia de palabras:");
-                for (String palabra : frecuencia.keySet()) {
-                    System.out.println(palabra + ": " + frecuencia.get(palabra));
-                }
-                
-                scanner.close();
-            }
+                <pre><code>
+function contarFrecuenciaPalabras(inputString) {
+    // Convertir a minúsculas y eliminar signos de puntuación
+    const texto = inputString.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+    
+    // Dividir en palabras
+    const palabras = texto.split(/\s+/);
+    
+    // Contar frecuencia
+    const frecuencia = {};
+    for (let palabra of palabras) {
+        if (palabra) { // Ignorar cadenas vacías
+            frecuencia[palabra] = (frecuencia[palabra] || 0) + 1;
         }
-                </code>
+    }
+    
+    // Convertir a formato de salida
+    let resultado = "";
+    for (let palabra in frecuencia) {
+        resultado += `"${palabra}": ${frecuencia[palabra]} veces\n`;
+    }
+    
+    return resultado;
+}
+                </code></pre>
             </div>
-        </body>
+            <div class="container">
+                <h3>Prueba el contador de frecuencia de palabras:</h3>
+                <input type="text" id="inputText2" placeholder="Escribe una frase...">
+                <button onclick="procesarFrecuencia()">Procesar</button>
+                <div class="resultado">
+                    <p>Resultado:</p>
+                    <pre id="outputText2" class="output"></pre>
+                </div>
+            </div>
+        </div>
     </section>
 
     <footer>
@@ -82,6 +180,5 @@
 
     <script src="script.js"></script>
     <script src="transition.js"></script>
-
 </body>
 </html>
