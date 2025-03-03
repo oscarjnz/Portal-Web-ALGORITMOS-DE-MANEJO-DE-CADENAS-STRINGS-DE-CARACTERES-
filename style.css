@@ -255,7 +255,7 @@ body {
     font-family: Arial, sans-serif; 
 }
 .codigo { 
-    background: #222; color: #0f0; padding: 10px; text-align: left; white-space: pre-wrap; font-family: monospace; 
+    background: #ffffff; color: #0f0; padding: 10px; text-align: left; white-space: pre-wrap; font-family: monospace; 
 }
 
 
@@ -331,3 +331,14 @@ body {
     overflow-x: hidden;
 }
 
+/* Para colocar la referencia en formato APA */
+#referencias .referencia {
+    margin-bottom: 15px;
+    padding-left: 2em;
+    text-indent: -2em;
+    line-height: 1.5;
+}
+#referencias ul {
+    list-style-type: none;
+    padding-left: 0;
+}
