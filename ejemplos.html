@@ -10,13 +10,6 @@
     <title>Ejemplos</title>
     <link rel="icon" href="image1.ico">
     <style>
-        #ejemplos .intro {
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-        }
-
         .ejemplo {
             margin-bottom: 50px;
             padding: 20px;
@@ -111,6 +104,12 @@
             animation: highlight 2s ease-in-out;
         }
         /* Modo normal */
+        #intro {
+            background-color: white;
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+        }            
         #outputText1 {
             background-color: white;
             color: black;
@@ -125,10 +124,20 @@
         }
 
         /* Modo oscuro */
-        .modo-oscuro #outputText2 {
+        .modo-oscuro #outputText1 {
             background-color: #222; /* Fondo oscuro */
             color: white; /* Texto claro */
             border: 1px solid #444; /* Para diferenciar la caja */
+        }
+        .modo-oscuro #outputText2 {
+            background-color: #222;
+            color: white;
+            border: 1px solid #444;
+        }
+        .modo-oscuro #intro {
+            background-color: #222;
+            color: white;
+            border: 1px solid #444;
         }
 
     </style>
